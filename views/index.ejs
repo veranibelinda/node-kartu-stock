@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>STOCK BARANG</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="header-logo" href="/">BACK TO HOME</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Stock Barang Drizzle</h1>
+        <a href="/new" class="new-button">+ Tambahkan</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column">ID</span>
+          <span class="nama-column">Nama Barang</span>
+          <span class="jumlah-column">Jumlah</span>
+          <span class="harga-column">Harga per satuan</span>
+        </div>
+
+        <ul class="table-body">
+          <% stuffs.forEach((stuff) => { %>
+            <li>
+              <div class="stuff-data">
+                <span class="id-column"><%= stuff.id %></span>
+                <span class="nama-column"><%= stuff.nama %></span>
+                <span class="jumlah-column"><%= stuff.jumlah %></span>
+                <span class="harga-column"><%= stuff.harga %></span>
+              </div>
+
+              <div class="stuff-menu">
+                <a href="/edit/<%= stuff.id %>">Edit</a>
+                <form action="/delete/<%= stuff.id %>" method="post">
+                  <input type="submit" value="Hapus">
+                </form>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
